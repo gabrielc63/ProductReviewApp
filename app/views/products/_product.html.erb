@@ -1,4 +1,4 @@
-<div id="<%= dom_id product %>">
+<div id="<%= dom_id product %>" class="col-md-3">
   <p>
     <strong>Name:</strong>
     <%= product.name %>
@@ -18,5 +18,7 @@
     <strong>Image url:</strong>
     <%= product.image_url %>
   </p>
+
+  <%= link_to 'Add review', new_product_review_path(product), class: "btn btn-primary", "data-controller": "turbo"  %>
 
 </div>
