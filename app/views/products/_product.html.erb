@@ -1,24 +1,26 @@
 <div id="<%= dom_id product %>" class="col-md-3">
+
   <p>
-    <strong>Name:</strong>
+    <%= image_tag(product.image_url, class: "img-thumbnail") %>
+  </p>
+
+  <p>
     <%= product.name %>
   </p>
 
   <p>
-    <strong>Description:</strong>
     <%= product.description %>
   </p>
 
   <p>
-    <strong>Overall rating:</strong>
-    <%= product.overall_rating %>
+    <% product.overall_rating.times do %>
+      <i class="bi bi-star-fill"></i>
+    <% end %>
+    <% product.blank_stars.times do %>
+      <i class="bi bi-star"></i>
+    <% end %>
   </p>
 
-  <p>
-    <strong>Image url:</strong>
-    <%= product.image_url %>
-  </p>
-
-  <%= link_to 'Add review', new_product_review_path(product), class: "btn btn-primary", "data-controller": "turbo"  %>
+  <%= link_to 'Add Review', new_product_review_path(product), class: "btn btn-primary", "data-controller": "turbo"  %>
 
 </div>
