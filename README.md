@@ -1,24 +1,49 @@
-# README
+# Product Review App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Request image](demo.png)
 
-Things you may want to cover:
+### Ruby Version
+This app is using ruby 3.0.5
 
-* Ruby version
+### Development Setup
 
-* System dependencies
+Run the following commands.
 
-* Configuration
+```
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+```
+### Development
 
-* Database creation
+Run the web server.
 
-* Database initialization
+`rails s`
 
-* How to run the test suite
+### Testing
 
-* Services (job queues, cache servers, search engines, etc.)
+Run RSpec tests.
 
-* Deployment instructions
+`RAILS_ENV=test bundle exec rspec`
 
-* ...
+### API Endpoints
+
+GET Request list products example:
+```
+curl --location 'localhost:3000/api/products'
+```
+
+POST Request create reviews example:
+```
+curl --location 'localhost:3000/api/reviews' \
+--header 'Content-Type: application/json' \
+--data '{
+    "review": {
+        "product_id": 1,
+        "reviewer_name": "mike",
+        "body": "test",
+        "rating": "4"
+    }
+}'
+```
